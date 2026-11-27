@@ -10,14 +10,9 @@ class LockTest {
         Lock lock = new Lock(50);
 
         // Act
-        lock.rotate(Direction.LEFT, 68);
+        lock.rotate(Direction.LEFT, 68, (_) -> {});
 
         // Assert
         assertThat(lock.getCurrentPosition()).isEqualTo(82);
-    }
-    
-    @Test
-    void getPassword_givenValidRotations_returnsCorrectPassword() {
-        assertThat(2 + 2).isEqualTo(4);
     }
 }
