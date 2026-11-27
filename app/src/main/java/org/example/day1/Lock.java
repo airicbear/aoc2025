@@ -12,12 +12,14 @@ public class Lock {
         this.currentPosition = currentPosition;
     }
 
-    void rotate(Direction direction, int distance, IntConsumer update) {
+    void rotate(Direction direction, int distance, IntConsumer updateFullRotation, IntConsumer updateOnPositionChange) {
         if (direction == Direction.LEFT) {
-            rotateLeft(distance, update);
+            rotateLeft(distance, updateOnPositionChange);
         } else {
-            rotateRight(distance, update);
+            rotateRight(distance, updateOnPositionChange);
         }
+
+        updateFullRotation.accept(this.currentPosition);
     }
 
     void rotateRight(int distance, IntConsumer update) {
@@ -27,9 +29,9 @@ public class Lock {
             } else {
                 this.currentPosition++;    
             }
+
+            update.accept(this.currentPosition);
         }
-        
-        update.accept(this.currentPosition);
     }
 
     void rotateLeft(int distance, IntConsumer update) {
@@ -39,9 +41,9 @@ public class Lock {
             } else {
                 this.currentPosition--;
             }
+
+            update.accept(this.currentPosition);
         }
-        
-        update.accept(this.currentPosition);
     }
 
     public int getCurrentPosition() {

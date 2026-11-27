@@ -16,7 +16,8 @@ class ProcedureTest {
 
         // Assert
         assertThat(procedure.getLock().getCurrentPosition()).isEqualTo(32);
-        assertThat(procedure.getZeroPositionCount()).isEqualTo(3);
+        assertThat(procedure.getZeroPositionFullCount()).isEqualTo(3);
+        assertThat(procedure.getZeroPositionClickCount()).isEqualTo(6);
     }
 
     @Test
@@ -28,6 +29,7 @@ class ProcedureTest {
         procedure.rotateLock("/day1/input.txt");
 
         // Assert
-        assertThat(procedure.getZeroPositionCount()).isEqualTo(1021);
+        assertThat(procedure.getZeroPositionFullCount()).isEqualTo(1021);
+        assertThat(procedure.getZeroPositionClickCount()).isEqualTo(5933);
     }
 }

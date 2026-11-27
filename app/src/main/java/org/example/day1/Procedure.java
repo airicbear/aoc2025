@@ -5,11 +5,13 @@ import java.nio.charset.StandardCharsets;
 
 public class Procedure {
     private Lock lock;
-    private int zeroPositionCount;
+    private int zeroPositionFullCount;
+    private int zeroPositionClickCount;
 
     public Procedure() {
         this.lock = new Lock(50);
-        this.zeroPositionCount = 0;
+        this.zeroPositionFullCount = 0;
+        this.zeroPositionClickCount = 0;
     }
 
     public void rotateLock(String path) throws IOException, InvalidInputException {
@@ -25,9 +27,9 @@ public class Procedure {
             int distance = Integer.parseInt(line.substring(1));
                 
             if (line.startsWith("L")) {
-                this.lock.rotate(Direction.LEFT, distance, this::incrementZeroPositionCount);
+                this.lock.rotate(Direction.LEFT, distance, this::incrementZeroPositionFullCount, this::incrementZeroPositionClickCount);
             } else if (line.startsWith("R")) {
-                this.lock.rotate(Direction.RIGHT, distance, this::incrementZeroPositionCount);
+                this.lock.rotate(Direction.RIGHT, distance, this::incrementZeroPositionFullCount, this::incrementZeroPositionClickCount);
             }
         }
     }
@@ -36,13 +38,23 @@ public class Procedure {
         return this.lock;
     }
 
-    public int getZeroPositionCount() {
-        return this.zeroPositionCount;
+    public int getZeroPositionFullCount() {
+        return this.zeroPositionFullCount;
     }
 
-    private void incrementZeroPositionCount(int position) {
+    public int getZeroPositionClickCount() {
+        return this.zeroPositionClickCount;
+    }
+
+    private void incrementZeroPositionFullCount(int position) {
         if (position == 0) {
-            this.zeroPositionCount++;
+            this.zeroPositionFullCount++;
+        }
+    }
+
+    private void incrementZeroPositionClickCount(int position) {
+        if (position == 0) {
+            this.zeroPositionClickCount++;
         }
     }
 

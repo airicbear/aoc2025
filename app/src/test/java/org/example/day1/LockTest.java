@@ -10,7 +10,7 @@ class LockTest {
         Lock lock = new Lock(50);
 
         // Act
-        lock.rotate(Direction.LEFT, 68, (_) -> {});
+        lock.rotate(Direction.LEFT, 68, (_) -> {}, (_) -> {});
 
         // Assert
         assertThat(lock.getCurrentPosition()).isEqualTo(82);
