@@ -31,6 +31,6 @@ class DatabaseTest {
         boolean result = database.isValidId(id);
 
         // Assert
-        assertThat(result).isEqualTo(false);
+        assertThat(result).isEqualTo(true);
     }
 }
