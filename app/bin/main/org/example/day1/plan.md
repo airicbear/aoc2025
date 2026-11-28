@@ -1,6 +1,6 @@
 # day 1 plan
 
-there is a password for a safe- it is determined by the left and right rotations described in the attached document
+there is a password to the north pole entrance in a safe- it is determined by the left and right rotations described in the attached document
 
 ## part 1
 
@@ -17,16 +17,16 @@ there is a password for a safe- it is determined by the left and right rotations
 - the document is like this:
   
   ```
-L68
-L30
-R48
-L5
-R60
-L55
-L1
-L99
-R14
-L82
+  L68
+  L30
+  R48
+  L5
+  R60
+  L55
+  L1
+  L99
+  R14
+  L82
   ```
     
     and it results in '3'
